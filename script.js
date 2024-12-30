@@ -45,7 +45,7 @@ gsap.from(".cardbox", {
 });
 
 // Backend API URL
-const backendUrl = "https://ssbackend-syh7.onrender.com";
+const backendUrl = "https://ssbackend-rwmb.onrender.com";
 
 // Function to show popup notifications
 function showPopup(message, isError = false) {
