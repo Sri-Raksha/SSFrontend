@@ -44,6 +44,9 @@ gsap.from(".cardbox", {
   },
 });
 
+// Backend API URL
+const backendUrl = "https://<your-backend-url>.onrender.com";
+
 // Function to show popup notifications
 function showPopup(message, isError = false) {
   const popup = document.getElementById("popup");
@@ -67,7 +70,7 @@ async function loginUser() {
   const password = document.getElementById("password").value;
 
   try {
-    const response = await fetch("http://localhost:5001/api/auth/login", {
+    const response = await fetch(`${backendUrl}/api/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -101,7 +104,7 @@ async function signupUser() {
   }
 
   try {
-    const response = await fetch("http://localhost:5001/api/auth/signup", {
+    const response = await fetch(`${backendUrl}/api/auth/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
