@@ -45,7 +45,7 @@ gsap.from(".cardbox", {
 });
 
 // Backend API URL
-const backendUrl = "https://<your-backend-url>.onrender.com";
+const backendUrl = "https://ssbackend-syh7.onrender.com";
 
 // Function to show popup notifications
 function showPopup(message, isError = false) {
@@ -113,7 +113,7 @@ async function signupUser() {
     const data = await response.json();
     if (response.ok) {
       showPopup("Signup successful! Please log in.");
-      window.location.href = "login.html"; // Redirect to login
+      window.location.href = "index.html"; // Redirect to login
     } else {
       showPopup(data.message, true); // Show backend error message
     }
@@ -127,7 +127,7 @@ async function signupUser() {
 function logoutUser() {
   localStorage.removeItem("token"); // Remove JWT token
   showPopup("Logged out successfully!");
-  window.location.href = "login.html"; // Redirect to login page
+  window.location.href = "index.html"; // Redirect to login page
 }
 
 // Redirect if user is not authenticated
@@ -135,7 +135,7 @@ function checkAuthentication() {
   const token = localStorage.getItem("token");
   if (!token) {
     const currentPage = window.location.href;
-    window.location.href = `login.html?redirect=${encodeURIComponent(currentPage)}`;
+    window.location.href = `index.html?redirect=${encodeURIComponent(currentPage)}`;
   }
 }
 
