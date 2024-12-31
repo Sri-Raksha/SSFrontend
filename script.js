@@ -44,9 +44,6 @@ gsap.from(".cardbox", {
   },
 });
 
-// Backend API URL
-const backendUrl = "https://ssbackend-rwmb.onrender.com/";
-
 // Function to show popup notifications
 function showPopup(message, isError = false) {
   const popup = document.getElementById("popup");
@@ -70,7 +67,7 @@ async function loginUser() {
   const password = document.getElementById("password").value;
 
   try {
-    const response = await fetch(`${backendUrl}/api/auth/login`, {
+    const response = await fetch("http://localhost:5001/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -104,7 +101,7 @@ async function signupUser() {
   }
 
   try {
-    const response = await fetch(`${backendUrl}/api/auth/signup`, {
+    const response = await fetch("http://localhost:5001/api/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -113,7 +110,7 @@ async function signupUser() {
     const data = await response.json();
     if (response.ok) {
       showPopup("Signup successful! Please log in.");
-      window.location.href = "index.html"; // Redirect to login
+      window.location.href = "login.html"; // Redirect to login
     } else {
       showPopup(data.message, true); // Show backend error message
     }
@@ -127,7 +124,7 @@ async function signupUser() {
 function logoutUser() {
   localStorage.removeItem("token"); // Remove JWT token
   showPopup("Logged out successfully!");
-  window.location.href = "index.html"; // Redirect to login page
+  window.location.href = "login.html"; // Redirect to login page
 }
 
 // Redirect if user is not authenticated
@@ -135,7 +132,7 @@ function checkAuthentication() {
   const token = localStorage.getItem("token");
   if (!token) {
     const currentPage = window.location.href;
-    window.location.href = `index.html?redirect=${encodeURIComponent(currentPage)}`;
+    window.location.href = `login.html?redirect=${encodeURIComponent(currentPage)}`;
   }
 }
 
