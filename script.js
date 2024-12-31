@@ -45,7 +45,7 @@ gsap.from(".cardbox", {
 });
 
 // Backend API URL
-const backendUrl = process.env.BACKEND_URL;
+const backendUrl = "https://ss-backend.vercel.app";
 
 // Function to show popup notifications
 function showPopup(message, isError = false) {
